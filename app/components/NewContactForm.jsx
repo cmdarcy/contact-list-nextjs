@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { useContacts } from "../contexts/contactsContext";
+import { useRouter } from "next/navigation";
 
 function NewContactForm() {
   const [name, setName] = useState("");
@@ -7,8 +9,14 @@ function NewContactForm() {
   const [imgURL, setImgURL] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
 
+  const { addContact } = useContacts();
+
+  const router = useRouter();
+
   function onSubmit(e) {
     e.preventDefault();
+    addContact({ name, email, imgURL, phoneNum });
+    router.push("/contacts");
   }
 
   return (
