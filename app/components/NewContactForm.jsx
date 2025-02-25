@@ -1,13 +1,14 @@
-"use client";
-import React, { useState } from "react";
-import { useContacts } from "../contexts/contactsContext";
-import { useRouter } from "next/navigation";
+'use client';
+
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useContacts } from '../contexts/contactsContext';
 
 function NewContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [imgURL, setImgURL] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [imgURL, setImgURL] = useState('');
+  const [phoneNum, setPhoneNum] = useState('');
 
   const { addContact } = useContacts();
 
@@ -20,7 +21,7 @@ function NewContactForm() {
   function onSubmit(e) {
     e.preventDefault();
     addContact({ name, email, imgURL, phoneNum, id: generateId() });
-    router.push("/contacts");
+    router.push('/contacts');
   }
 
   return (
