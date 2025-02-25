@@ -8,7 +8,13 @@ import { useContacts } from '@/app/contexts/contactsContext';
 function Contact() {
   const { id } = useParams();
   const { getContact } = useContacts();
-  const { name, email, imgURL, phoneNum } = getContact(id);
+  const contact = getContact(parseInt(id));
+
+  if (!contact) {
+    return <div>Contact not found</div>;
+  }
+
+  const { name, email, imgURL, phoneNum } = contact;
 
   return (
     <div>
