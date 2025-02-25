@@ -24,6 +24,12 @@ export function ContactsProvider({ children }) {
     : contacts.filter((c) =>
         c.name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
+  const editContact = (contactID, updatedContact) => {
+    const newContacts = [...contacts];
+    const indexToUpdate = newContacts.findIndex((c) => c.id === contactID);
+    newContacts[indexToUpdate] = updatedContact;
+    setContacts(newContacts);
+  };
 
   const contactsContextValue = {
     contacts,
@@ -33,6 +39,7 @@ export function ContactsProvider({ children }) {
     searchTerm,
     setSearchTerm,
     filteredContacts,
+    editContact,
   };
 
   return (

@@ -17,6 +17,10 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
     }
   }
 
+  function onEditClickHandler() {
+    router.push(`/contacts/${id}/edit`);
+  }
+
   return (
     <div>
       <img src={imgURL} alt="profileImg" />
@@ -25,6 +29,9 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
       <p>{phoneNum}</p>
       <button type="button" onClick={onDeleteClickHandler}>
         Delete
+      </button>
+      <button type="button" onClick={onEditClickHandler}>
+        Edit
       </button>
     </div>
   );
