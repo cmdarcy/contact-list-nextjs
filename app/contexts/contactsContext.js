@@ -14,8 +14,9 @@ export function ContactsProvider({children}) {
             }
         }
     }
+    const deleteContact = (contactID) => setContacts(contacts.filter((c) => c.id !== contactID))
 
-    const contactsContextValue = {contacts, addContact, getContact}
+    const contactsContextValue = {contacts, addContact, getContact, deleteContact}
 
     return (
         <ContactsContext.Provider value={contactsContextValue}>
