@@ -7,8 +7,15 @@ export function ContactsProvider({children}) {
     const [contacts, setContacts] = useState([]);
 
     const addContact = (contact) => setContacts([...contacts, contact])
+    const getContact = (contactID) => {
+        for (const contactObj of contacts) {
+            if (contactObj.id === parseInt(contactID)) {
+                return contactObj
+            }
+        }
+    }
 
-    const contactsContextValue = {contacts, addContact}
+    const contactsContextValue = {contacts, addContact, getContact}
 
     return (
         <ContactsContext.Provider value={contactsContextValue}>
