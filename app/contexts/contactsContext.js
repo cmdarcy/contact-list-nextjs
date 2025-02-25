@@ -5,6 +5,7 @@ const ContactsContext = createContext()
 
 export function ContactsProvider({children}) {
     const [contacts, setContacts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const addContact = (contact) => setContacts([...contacts, contact])
     const getContact = (contactID) => {
@@ -15,8 +16,9 @@ export function ContactsProvider({children}) {
         }
     }
     const deleteContact = (contactID) => setContacts(contacts.filter((c) => c.id !== contactID))
+    const filteredContacts = !searchTerm ? contacts : contacts.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
-    const contactsContextValue = {contacts, addContact, getContact, deleteContact}
+    const contactsContextValue = {contacts, addContact, getContact, deleteContact, searchTerm, setSearchTerm, filteredContacts}
 
     return (
         <ContactsContext.Provider value={contactsContextValue}>
