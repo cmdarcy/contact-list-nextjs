@@ -20,6 +20,11 @@ function NewContactForm() {
 
   function onSubmit(e) {
     e.preventDefault();
+    if (name.trim() === '' || phoneNum.trim() === '') {
+      alert('Name and Phone Fields must not be empty space, please try again!');
+      return;
+    }
+    // TODO check for valid phoneNum, email, and imgURL
     addContact({ name, email, imgURL, phoneNum, id: generateId() });
     router.push('/contacts');
   }
@@ -31,6 +36,7 @@ function NewContactForm() {
         type="text"
         id="name"
         value={name}
+        required
         onChange={(e) => setName(e.target.value)}
       />
       <label htmlFor="email">Email</label>
@@ -38,6 +44,7 @@ function NewContactForm() {
         type="email"
         id="email"
         value={email}
+        required
         onChange={(e) => setEmail(e.target.value)}
       />
       <label htmlFor="imgURL">Image URL</label>
@@ -45,6 +52,7 @@ function NewContactForm() {
         type="url"
         id="imgURL"
         value={imgURL}
+        required
         onChange={(e) => setImgURL(e.target.value)}
       />
       <label htmlFor="phoneNum">Phone Number</label>
@@ -52,6 +60,7 @@ function NewContactForm() {
         type="tel"
         id="phoneNum"
         value={phoneNum}
+        required
         onChange={(e) => setPhoneNum(e.target.value)}
       />
       <button type="submit">Submit</button>
