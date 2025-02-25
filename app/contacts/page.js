@@ -11,7 +11,7 @@ function Contacts() {
         <h1>All Contacts</h1>
         <Link href={'/contacts/new'}>Add New</Link>
             {contacts.map((c) => {
-                return <ContactRow name={c.name} email={c.email} imgURL={c.imgURL} phoneNum={c.phoneNum} key={c.name} />})}
+                return <ContactRow name={c.name} email={c.email} imgURL={c.imgURL} phoneNum={c.phoneNum} key={c.id} id={c.id} />})}
     </div>
   )
 }

@@ -11,11 +11,15 @@ function NewContactForm() {
 
   const { addContact } = useContacts();
 
+  function generateId() {
+    return Math.round(Math.random() * 100000000);
+  }
+
   const router = useRouter();
 
   function onSubmit(e) {
     e.preventDefault();
-    addContact({ name, email, imgURL, phoneNum });
+    addContact({ name, email, imgURL, phoneNum, id: generateId() });
     router.push("/contacts");
   }
 
