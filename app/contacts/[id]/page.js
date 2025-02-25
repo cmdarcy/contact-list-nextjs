@@ -16,7 +16,7 @@ function Contact() {
         Contact {id}: {name}
       </h1>
       <Link href="/contacts"> Back </Link>
-      <img src={imgURL} />
+      <img src={imgURL} alt="contact" />
       <p>Email:{email}</p>
       <p>Phone Number: {phoneNum}</p>
     </div>

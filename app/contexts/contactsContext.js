@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ContactsContext = createContext();
 
@@ -42,3 +43,7 @@ export function ContactsProvider({ children }) {
 }
 
 export const useContacts = () => useContext(ContactsContext);
+
+ContactsProvider.propTypes = {
+  children: PropTypes.object,
+};

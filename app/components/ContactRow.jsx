@@ -1,7 +1,7 @@
-import { useRouter } from "next/navigation";
-import React from "react";
-import { useContacts } from "../contexts/contactsContext";
-import PropTypes from "prop-types";
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useContacts } from '../contexts/contactsContext';
 
 function ContactRow({ name, email, imgURL, phoneNum, id }) {
   const router = useRouter();
@@ -12,7 +12,7 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
   }
 
   function onDeleteClickHandler() {
-    if (window.confirm("Are you sure you want to delete this contact?")) {
+    if (window.confirm('Are you sure you want to delete this contact?')) {
       deleteContact(id);
     }
   }
@@ -23,7 +23,9 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
       <p onClick={onContactClickHandler}>{name}</p>
       <p>{email}</p>
       <p>{phoneNum}</p>
-      <button onClick={onDeleteClickHandler}>Delete</button>
+      <button type="button" onClick={onDeleteClickHandler}>
+        Delete
+      </button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
+import PropTypes from 'prop-types';
 import { ContactsProvider } from './contexts/contactsContext';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,3 +19,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.object,
+};
