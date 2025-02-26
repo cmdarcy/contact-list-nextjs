@@ -28,64 +28,66 @@ function NewContactForm() {
   }
 
   return (
-    <form className="row" action="" onSubmit={onSubmit}>
-      <div className="mb-3 col-6">
-        <label className="form-label" htmlFor="name">
-          Name
-        </label>
-        <input
-          className="form-control"
-          type="text"
-          id="name"
-          value={name}
-          required
-          onChange={(e) => setName(e.target.value)}
-        />
+    <form className="container" action="" onSubmit={onSubmit}>
+      <div className="row">
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="name"
+            value={name}
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="form-control"
+            type="email"
+            id="email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
       </div>
-      <div className="mb-3 col-6">
-        <label className="form-label" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="form-control"
-          type="email"
-          id="email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className="row">
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="imgURL">
+            Image URL
+          </label>
+          <input
+            className="form-control"
+            type="url"
+            id="imgURL"
+            value={imgURL}
+            required
+            onChange={(e) => setImgURL(e.target.value)}
+          />
+        </div>
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="phoneNum">
+            Phone Number
+          </label>
+          <input
+            className="form-control"
+            type="tel"
+            id="phoneNum"
+            value={phoneNum}
+            required
+            onChange={(e) => setPhoneNum(e.target.value)}
+          />
+        </div>
       </div>
-      <div className="mb-3 col-6">
-        <label className="form-label" htmlFor="imgURL">
-          Image URL
-        </label>
-        <input
-          className="form-control"
-          type="url"
-          id="imgURL"
-          value={imgURL}
-          required
-          onChange={(e) => setImgURL(e.target.value)}
-        />
-      </div>
-      <div className="mb-3 col-6">
-        <label className="form-label" htmlFor="phoneNum">
-          Phone Number
-        </label>
-        <input
-          className="form-control"
-          type="tel"
-          id="phoneNum"
-          value={phoneNum}
-          required
-          onChange={(e) => setPhoneNum(e.target.value)}
-        />
-      </div>
-      <div className="col-12">
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
     </form>
   );
 }
