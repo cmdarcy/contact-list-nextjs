@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { useContacts } from '../contexts/contactsContext';
+import { validateFormInputs } from '../utils/validateForm';
 
 function EditContactForm({
   contactName,
@@ -23,14 +24,16 @@ function EditContactForm({
 
   function onSubmit(e) {
     e.preventDefault();
-    editContact(contactID, {
-      name,
-      email,
-      imgURL,
-      phoneNum,
-      id: contactID,
-    });
-    router.push('/contacts');
+    if (validateFormInputs(name, email, phoneNum)) {
+      editContact(contactID, {
+        name,
+        email,
+        imgURL,
+        phoneNum,
+        id: contactID,
+      });
+      router.push('/contacts');
+    }
   }
 
   return (
@@ -40,6 +43,7 @@ function EditContactForm({
         type="text"
         id="name"
         value={name}
+        required
         onChange={(e) => setName(e.target.value)}
       />
       <label htmlFor="email">Email</label>
@@ -47,6 +51,7 @@ function EditContactForm({
         type="email"
         id="email"
         value={email}
+        required
         onChange={(e) => setEmail(e.target.value)}
       />
       <label htmlFor="imgURL">Image URL</label>
@@ -54,6 +59,7 @@ function EditContactForm({
         type="url"
         id="imgURL"
         value={imgURL}
+        required
         onChange={(e) => setImgURL(e.target.value)}
       />
       <label htmlFor="phoneNum">Phone Number</label>
@@ -61,6 +67,7 @@ function EditContactForm({
         type="tel"
         id="phoneNum"
         value={phoneNum}
+        required
         onChange={(e) => setPhoneNum(e.target.value)}
       />
       <button type="submit">Submit</button>

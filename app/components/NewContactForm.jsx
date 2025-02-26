@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useContacts } from '../contexts/contactsContext';
+import { validateFormInputs } from '../utils/validateForm';
 
 function NewContactForm() {
   const [name, setName] = useState('');
@@ -20,13 +21,10 @@ function NewContactForm() {
 
   function onSubmit(e) {
     e.preventDefault();
-    if (name.trim() === '' || phoneNum.trim() === '') {
-      alert('Name and Phone Fields must not be empty space, please try again!');
-      return;
+    if (validateFormInputs(name, email, phoneNum)) {
+      addContact({ name, email, imgURL, phoneNum, id: generateId() });
+      router.push('/contacts');
     }
-    // TODO check for valid phoneNum, email, and imgURL
-    addContact({ name, email, imgURL, phoneNum, id: generateId() });
-    router.push('/contacts');
   }
 
   return (
