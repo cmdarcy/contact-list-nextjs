@@ -3,8 +3,8 @@ import NewContactForm from '@/app/components/NewContactForm';
 
 function New() {
   return (
-    <div>
-      <h1>Add New Contact</h1>
+    <div className="container">
+      <h1 className="text-center">Add New Contact</h1>
       <NewContactForm />
     </div>
   );
