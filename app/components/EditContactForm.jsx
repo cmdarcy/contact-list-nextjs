@@ -37,40 +37,66 @@ function EditContactForm({
   }
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        value={name}
-        required
-        onChange={(e) => setName(e.target.value)}
-      />
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        required
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="imgURL">Image URL</label>
-      <input
-        type="url"
-        id="imgURL"
-        value={imgURL}
-        required
-        onChange={(e) => setImgURL(e.target.value)}
-      />
-      <label htmlFor="phoneNum">Phone Number</label>
-      <input
-        type="tel"
-        id="phoneNum"
-        value={phoneNum}
-        required
-        onChange={(e) => setPhoneNum(e.target.value)}
-      />
-      <button type="submit">Submit</button>
+    <form className="container" action="" onSubmit={onSubmit}>
+      <div className="row">
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="name"
+            value={name}
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="form-control"
+            type="email"
+            id="email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="imgURL">
+            Image URL
+          </label>
+          <input
+            className="form-control"
+            type="url"
+            id="imgURL"
+            value={imgURL}
+            required
+            onChange={(e) => setImgURL(e.target.value)}
+          />
+        </div>
+        <div className="mb-3 col">
+          <label className="form-label" htmlFor="phoneNum">
+            Phone Number
+          </label>
+          <input
+            className="form-control"
+            type="tel"
+            id="phoneNum"
+            value={phoneNum}
+            required
+            onChange={(e) => setPhoneNum(e.target.value)}
+          />
+        </div>
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
     </form>
   );
 }

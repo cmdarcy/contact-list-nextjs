@@ -17,9 +17,11 @@ function Edit() {
 
   const { name, email, imgURL, phoneNum } = contact;
   return (
-    <div>
+    <div className="text-center">
       <h1>Edit Contact</h1>
-      <Link href="/contacts">Back</Link>
+      <Link className="btn btn-info" href="/contacts">
+        Back to Contacts
+      </Link>
       <EditContactForm
         contactName={name}
         contactEmail={email}
