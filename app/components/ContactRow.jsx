@@ -1,9 +1,11 @@
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useContacts } from '../contexts/contactsContext';
 
 function ContactRow({ name, email, imgURL, phoneNum, id }) {
+  const [imageSrc, setImageSrc] = useState(imgURL);
+  const fallbackImageURL = '/defaultProfileIconSmall.png';
   const router = useRouter();
   const { deleteContact } = useContacts();
 
@@ -23,7 +25,11 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
 
   return (
     <div>
-      <img src={imgURL} alt="profileImg" />
+      <img
+        src={imageSrc}
+        alt="profileImg"
+        onError={() => setImageSrc(fallbackImageURL)}
+      />
       <p onClick={onContactClickHandler}>{name}</p>
       <p>{email}</p>
       <p>{phoneNum}</p>
