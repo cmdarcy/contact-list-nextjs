@@ -4,18 +4,36 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useContacts } from '../contexts/contactsContext';
 
+/**
+ * Renders a single contact row with image, details, and action buttons
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.name - Contact's name
+ * @param {string} props.email - Contact's email
+ * @param {string} props.imgURL - URL of contact's profile image
+ * @param {string} props.phoneNum - Contact's phone number
+ * @param {number} props.id - Unique identifier for the contact
+ * @returns {JSX.Element} A row displaying contact information and actions
+ */
 function ContactRow({ name, email, imgURL, phoneNum, id }) {
   const [imageSrc, setImageSrc] = useState(imgURL);
   const fallbackImageURL = '/defaultProfileIconSmall.png';
   const router = useRouter();
   const { deleteContact } = useContacts();
 
+  /**
+   * Handles the deletion of a contact after user confirmation
+   */
   function onDeleteClickHandler() {
     if (window.confirm('Are you sure you want to delete this contact?')) {
       deleteContact(id);
     }
   }
 
+  /**
+   * Navigates to the edit page for the current contact
+   */
   function onEditClickHandler() {
     router.push(`/contacts/${id}/edit`);
   }
@@ -57,11 +75,11 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
 }
 
 ContactRow.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   imgURL: PropTypes.string,
-  phoneNum: PropTypes.string,
-  id: PropTypes.number,
+  phoneNum: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default ContactRow;

@@ -6,6 +6,18 @@ import PropTypes from 'prop-types';
 import { useContacts } from '../contexts/contactsContext';
 import { validateFormInputs } from '../utils/validateForm';
 
+/**
+ * Renders a form for editing an existing contact
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.contactName - Current name of the contact
+ * @param {string} props.contactEmail - Current email of the contact
+ * @param {string} props.contactImgURL - Current image URL of the contact
+ * @param {string} props.contactPhoneNum - Current phone number of the contact
+ * @param {number} props.contactID - Unique identifier for the contact
+ * @returns {JSX.Element} A form for editing contact details
+ */
 function EditContactForm({
   contactName,
   contactEmail,
@@ -22,6 +34,11 @@ function EditContactForm({
 
   const router = useRouter();
 
+  /**
+   * Handles form submission, validates inputs, and updates contact
+   *
+   * @param {Event} e - Form submission event
+   */
   function onSubmit(e) {
     e.preventDefault();
     if (validateFormInputs(name, email, phoneNum)) {
@@ -102,11 +119,11 @@ function EditContactForm({
 }
 
 EditContactForm.propTypes = {
-  contactName: PropTypes.string,
-  contactEmail: PropTypes.string,
+  contactName: PropTypes.string.isRequired,
+  contactEmail: PropTypes.string.isRequired,
   contactImgURL: PropTypes.string,
-  contactPhoneNum: PropTypes.string,
-  contactID: PropTypes.number,
+  contactPhoneNum: PropTypes.string.isRequired,
+  contactID: PropTypes.number.isRequired,
 };
 
 export default EditContactForm;

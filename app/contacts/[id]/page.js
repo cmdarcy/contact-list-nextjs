@@ -5,6 +5,12 @@ import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { useContacts } from '@/app/contexts/contactsContext';
 
+/**
+ * Renders detailed information for a specific contact
+ * 
+ * @component
+ * @returns {JSX.Element} A detailed view of a contact including name, image, email, and phone number
+ */
 function Contact() {
   const { id } = useParams();
   const fallbackImageURL = '/defaultProfileIconSmall.png';
