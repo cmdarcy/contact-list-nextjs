@@ -28,13 +28,13 @@ function Contacts() {
         {filteredContacts.map((c, index) => (
           <div
             className={`row my-2 align-items-center text-center justify-content-between rounded ${index % 2 === 0 ? 'bg-body-tertiary' : ''}`}
+            key={c.id}
           >
             <ContactRow
               name={c.name}
               email={c.email}
               imgURL={c.imgURL}
               phoneNum={c.phoneNum}
-              key={c.id}
               id={c.id}
             />
           </div>
