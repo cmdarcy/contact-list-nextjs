@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { useContacts } from '../contexts/contactsContext';
 
 function ContactRow({ name, email, imgURL, phoneNum, id }) {
@@ -8,10 +9,6 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
   const fallbackImageURL = '/defaultProfileIconSmall.png';
   const router = useRouter();
   const { deleteContact } = useContacts();
-
-  function onContactClickHandler() {
-    router.push(`/contacts/${id}`);
-  }
 
   function onDeleteClickHandler() {
     if (window.confirm('Are you sure you want to delete this contact?')) {
@@ -24,22 +21,37 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
   }
 
   return (
-    <div>
-      <img
-        src={imageSrc}
-        alt="profileImg"
-        onError={() => setImageSrc(fallbackImageURL)}
-      />
-      <p onClick={onContactClickHandler}>{name}</p>
-      <p>{email}</p>
-      <p>{phoneNum}</p>
-      <button type="button" onClick={onDeleteClickHandler}>
-        Delete
-      </button>
-      <button type="button" onClick={onEditClickHandler}>
-        Edit
-      </button>
-    </div>
+    <>
+      <div className="col-lg-auto">
+        <img
+          src={imageSrc}
+          alt="profileImg"
+          onError={() => setImageSrc(fallbackImageURL)}
+        />
+      </div>
+      <div className="col-lg-2 text-start">
+        <Link href={`/contacts/${id}`}>{name}</Link>
+      </div>
+      <div className="col-lg-2">{email}</div>
+      <div className="col-lg-2">{phoneNum}</div>
+
+      <div className="col-lg-auto btn-group btn-group-sm">
+        <button
+          className="btn btn-danger"
+          type="button"
+          onClick={onDeleteClickHandler}
+        >
+          Delete
+        </button>
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={onEditClickHandler}
+        >
+          Edit
+        </button>
+      </div>
+    </>
   );
 }
 
