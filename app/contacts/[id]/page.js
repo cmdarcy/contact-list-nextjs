@@ -11,30 +11,33 @@ function Contact() {
   const { getContact } = useContacts();
   const contact = getContact(parseInt(id));
 
-  if (!contact) {
-    return <div>Contact not found</div>;
-  }
-
   const { name, email, imgURL, phoneNum } = contact;
 
   return (
     <div className="container text-center">
-      <h1>{name}</h1>
-      <Link className="btn btn-info mb-2" href="/contacts">
-        Back to Contacts
-      </Link>
-      <img
-        className="mx-auto d-block"
-        src={imgURL}
-        height={200}
-        alt="contact"
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = fallbackImageURL;
-        }}
-      />
-      <p>Email: {email}</p>
-      <p>Phone Number: {phoneNum}</p>
+      {contact.error ? (
+        // TODO replace with Error Component
+        'Contact not found'
+      ) : (
+        <>
+          <h1>{name}</h1>
+          <Link className="btn btn-info mb-2" href="/contacts">
+            Back to Contacts
+          </Link>
+          <img
+            className="mx-auto d-block"
+            src={imgURL}
+            height={200}
+            alt="contact"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = fallbackImageURL;
+            }}
+          />
+          <p>Email: {email}</p>
+          <p>Phone Number: {phoneNum}</p>
+        </>
+      )}
     </div>
   );
 }

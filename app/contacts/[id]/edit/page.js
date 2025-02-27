@@ -11,24 +11,27 @@ function Edit() {
   const { getContact } = useContacts();
   const contact = getContact(parseInt(id));
 
-  if (!contact) {
-    return <div>Contact not found</div>;
-  }
-
   const { name, email, imgURL, phoneNum } = contact;
   return (
     <div className="text-center">
-      <h1>Edit Contact</h1>
-      <Link className="btn btn-info" href="/contacts">
-        Back to Contacts
-      </Link>
-      <EditContactForm
-        contactName={name}
-        contactEmail={email}
-        contactImgURL={imgURL}
-        contactPhoneNum={phoneNum}
-        contactID={parseInt(id)}
-      />
+      {contact.error ? (
+        // TODO replace with Error Component
+        'Contact not found'
+      ) : (
+        <>
+          <h1>Edit Contact</h1>
+          <Link className="btn btn-info" href="/contacts">
+            Back to Contacts
+          </Link>
+          <EditContactForm
+            contactName={name}
+            contactEmail={email}
+            contactImgURL={imgURL}
+            contactPhoneNum={phoneNum}
+            contactID={parseInt(id)}
+          />
+        </>
+      )}
     </div>
   );
 }

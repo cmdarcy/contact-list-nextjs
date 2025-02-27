@@ -11,10 +11,17 @@ export function ContactsProvider({ children }) {
 
   const addContact = (contact) => setContacts([...contacts, contact]);
   const getContact = (contactID) => {
-    for (const contactObj of contacts) {
-      if (contactObj.id === parseInt(contactID)) {
-        return contactObj;
+    // const fakeContacts = [];
+    try {
+      for (const contactObj of contacts) {
+        if (contactObj.id === parseInt(contactID)) {
+          return contactObj;
+        }
       }
+      throw new Error(`Sorry could not find contact ${contactID}`);
+    } catch (error) {
+      console.error(error);
+      return { error: error.message };
     }
   };
   const deleteContact = (contactID) =>
