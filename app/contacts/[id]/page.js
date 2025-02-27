@@ -20,17 +20,17 @@ function Contact() {
   return (
     <div className="container text-center">
       <h1>{name}</h1>
-      <Link className="btn btn-info" href="/contacts">
+      <Link className="btn btn-info mb-2" href="/contacts">
         Back to Contacts
       </Link>
       <img
         className="mx-auto d-block"
         src={imgURL}
+        height={200}
         alt="contact"
         onError={(e) => {
           e.target.onerror = null;
           e.target.src = fallbackImageURL;
-          e.target.height = 200;
         }}
       />
       <p>Email: {email}</p>

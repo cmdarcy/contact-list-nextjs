@@ -22,14 +22,15 @@ function ContactRow({ name, email, imgURL, phoneNum, id }) {
 
   return (
     <>
-      <div className="col-lg-auto">
+      <div className="col-lg-2 py-2">
         <img
           src={imageSrc}
+          height={80}
           alt="profileImg"
           onError={() => setImageSrc(fallbackImageURL)}
         />
       </div>
-      <div className="col-lg-2 text-start">
+      <div className="col-lg-2">
         <Link href={`/contacts/${id}`}>{name}</Link>
       </div>
       <div className="col-lg-2">{email}</div>
