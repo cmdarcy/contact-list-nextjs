@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { useContacts } from '@/app/contexts/contactsContext';
 
 function Contact() {
@@ -10,8 +10,8 @@ function Contact() {
   const fallbackImageURL = '/defaultProfileIconSmall.png';
   const { getContact } = useContacts();
   const contact = getContact(parseInt(id));
-
   const { name, email, imgURL, phoneNum } = contact;
+  const [imageSrc, setImageSrc] = useState(imgURL);
 
   return (
     <div className="container text-center">
@@ -26,12 +26,11 @@ function Contact() {
           </Link>
           <img
             className="mx-auto d-block"
-            src={imgURL}
+            src={imageSrc}
             height={200}
             alt="contact"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = fallbackImageURL;
+            onError={() => {
+              setImageSrc(fallbackImageURL);
             }}
           />
           <p>Email: {email}</p>
