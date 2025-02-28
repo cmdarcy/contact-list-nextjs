@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { useContacts } from '@/app/contexts/contactsContext';
+import Error from '@/app/components/Error';
 
 /**
  * Renders detailed information for a specific contact
- * 
+ *
  * @component
  * @returns {JSX.Element} A detailed view of a contact including name, image, email, and phone number
  */
@@ -22,8 +23,7 @@ function Contact() {
   return (
     <div className="container text-center">
       {contact.error ? (
-        // TODO replace with Error Component
-        'Contact not found'
+        <Error id={id} />
       ) : (
         <>
           <h1>{name}</h1>

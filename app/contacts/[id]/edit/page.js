@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 import { useContacts } from '@/app/contexts/contactsContext';
 import EditContactForm from '@/app/components/EditContactForm';
+import Error from '@/app/components/Error';
 
 function Edit() {
   const { id } = useParams();
@@ -15,8 +16,7 @@ function Edit() {
   return (
     <div className="text-center">
       {contact.error ? (
-        // TODO replace with Error Component
-        'Contact not found'
+        <Error id={id} />
       ) : (
         <>
           <h1>Edit Contact</h1>
