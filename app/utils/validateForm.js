@@ -1,6 +1,6 @@
 /**
  * Validates form inputs for contact creation/editing
- * 
+ *
  * @param {string} testName - The name to validate
  * @param {string} testEmail - The email to validate
  * @param {string} testPhoneNum - The phone number to validate
@@ -14,7 +14,7 @@ export function validateFormInputs(testName, testEmail, testPhoneNum) {
     emptyFields:
       'Name and Phone Fields must not be empty space, please try again!',
     invalidEmail: 'Email is invalid please try again!',
-    invalidPhone: 'Phone Number is invalid please try again!',
+    invalidPhone: 'Phone Number is invalid. Should be in the form ###-###-####',
   };
 
   if (testName.trim() === '' || testPhoneNum.trim() === '') {

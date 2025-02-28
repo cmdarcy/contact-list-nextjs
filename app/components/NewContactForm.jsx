@@ -102,6 +102,7 @@ function NewContactForm() {
             className="form-control"
             type="tel"
             id="phoneNum"
+            placeholder="###-###-####"
             value={phoneNum}
             required
             onChange={(e) => setPhoneNum(e.target.value)}
