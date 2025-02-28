@@ -17,12 +17,12 @@ function Contact() {
   const fallbackImageURL = '/defaultProfileIconSmall.png';
   const { getContact } = useContacts();
   const contact = getContact(parseInt(id));
-  const { name, email, imgURL, phoneNum } = contact;
+  const { name, email, imgURL, phoneNum, isError } = contact;
   const [imageSrc, setImageSrc] = useState(imgURL);
 
   return (
     <div className="container text-center">
-      {contact.error ? (
+      {isError ? (
         <Error id={id} />
       ) : (
         <>

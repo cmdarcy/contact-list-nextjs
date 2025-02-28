@@ -40,7 +40,13 @@ export function ContactsProvider({ children }) {
       throw new Error(`Sorry could not find contact ${contactID}`);
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return {
+        name: null,
+        email: null,
+        imgURL: null,
+        phoneNum: null,
+        isError: true,
+      };
     }
   };
 

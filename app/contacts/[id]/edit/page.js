@@ -12,10 +12,10 @@ function Edit() {
   const { getContact } = useContacts();
   const contact = getContact(parseInt(id));
 
-  const { name, email, imgURL, phoneNum } = contact;
+  const { name, email, imgURL, phoneNum, isError } = contact;
   return (
     <div className="text-center">
-      {contact.error ? (
+      {isError ? (
         <Error id={id} />
       ) : (
         <>

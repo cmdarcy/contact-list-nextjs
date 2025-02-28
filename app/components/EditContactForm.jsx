@@ -48,6 +48,7 @@ function EditContactForm({
         imgURL,
         phoneNum,
         id: contactID,
+        isError: false,
       });
       router.push('/contacts');
     }

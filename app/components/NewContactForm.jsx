@@ -7,7 +7,7 @@ import { validateFormInputs } from '../utils/validateForm';
 
 /**
  * Renders a form for creating a new contact
- * 
+ *
  * @component
  * @returns {JSX.Element} A form for adding a new contact
  */
@@ -21,7 +21,7 @@ function NewContactForm() {
 
   /**
    * Generates a random unique ID for a new contact
-   * 
+   *
    * @returns {number} A randomly generated ID
    */
   function generateId() {
@@ -32,13 +32,20 @@ function NewContactForm() {
 
   /**
    * Handles form submission, validates inputs, and adds a new contact
-   * 
+   *
    * @param {Event} e - Form submission event
    */
   function onSubmit(e) {
     e.preventDefault();
     if (validateFormInputs(name, email, phoneNum)) {
-      addContact({ name, email, imgURL, phoneNum, id: generateId() });
+      addContact({
+        name,
+        email,
+        imgURL,
+        phoneNum,
+        id: generateId(),
+        isError: false,
+      });
       router.push('/contacts');
     }
   }
